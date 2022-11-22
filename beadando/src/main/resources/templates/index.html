@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css" th:href="@{/static/css/index.css}" >
     <title>6-os lottó</title>
 </head>
 <body>
     <div>
-        <div id="fejlec">
+        <div>
             <h1>6-os lottó</h1>
             <ul>
                 <li class="menu">Nyerőszámok</li>
                 <li class="menu">Kapcsolat</li>
                 <li class="menu">Visszajelzések</li>
-                <li class="menu" id="belep" th:insert="menu">Belépés</li>
+                <li class="menu" th:insert="menu">Belépés</li>
             </ul>
         </div>
         <div>
@@ -30,7 +31,7 @@
             </table>
         </div>
     </div>
-    <div id="footer">
+    <div>
         2022 &copy; 6-oslotto Zrt.
     </div>
 </body>
