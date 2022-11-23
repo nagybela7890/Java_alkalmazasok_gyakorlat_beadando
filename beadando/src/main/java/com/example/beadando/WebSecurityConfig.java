@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/resources/**", "/","/regisztral", "/regisztral_feldolgoz","/kapcsolat ").permitAll()
+                .antMatchers("/resources/**", "/","/regisztral", "/regisztral"," feldolgoz","/kapcsolat ").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
