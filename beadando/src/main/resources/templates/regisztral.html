@@ -1,6 +1,20 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
+  <script language="JavaScript">
+    function chkForm()
+    {
+      if (form1.pass1.value != form1.pass2.value)
+      {
+        console.log("Please re-enter your password");
+        form1.pass1.value = "";
+        form1.pass2.value = "";
+        form1.pass1.focus();
+        return false;
+      }
+    }
+  </script>
+
   <title>Bejelentkezés, regisztráció</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
@@ -12,7 +26,8 @@
     <legend>Regisztráció</legend>
     <p><input type="text" th:field="*{name}" placeholder="Név" required/></p>
     <p><input type="text" th:field="*{email}" placeholder="Email" required/></p>
-    <p><input type="password" th:field="*{password}" placeholder="Jelszó" required/></p>
+    <p><input type="password" th:field="*{password}" name="pass1" placeholder="Jelszó" required/></p>
+    <p><input type="password" placeholder="Jelszó" name="pass2" required/></p>
     <p><input type="submit" value="Regisztráció" /></p>
   </fieldset>
 </form>

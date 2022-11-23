@@ -10,8 +10,10 @@
   <div>
  <span sec:authorize="isAnonymous()">
  <a th:href="@{/login}">Login</a>
-     <a th:href="@{/regisztral}">Regisztrál</a>
- </span>
+  </span>
+      <span sec:authorize="isAnonymous()">
+          <a th:href="@{/regisztral}">Regisztrál</a>
+      </span>
     <span sec:authorize="isAuthenticated()">
  <a th:href="@{/}">Home</a>
  <a th:href="@{/logout}">Logout</a>

@@ -41,6 +41,7 @@ public class HomeController {
                 model.addAttribute("uzenet", "A regisztrációs email már foglalt!");
                 return "reghiba";
             }
+
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role role = new Role();
@@ -53,4 +54,5 @@ public class HomeController {
         model.addAttribute("id", user.getId());
         return "regjo";
     }
+
 }
