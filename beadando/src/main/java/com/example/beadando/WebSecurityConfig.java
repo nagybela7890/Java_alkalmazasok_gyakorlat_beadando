@@ -11,27 +11,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)// Class WebSecurityConfigurerAdapter:
-// Provides a convenient base class for creating a WebSecurityConfigurer instance.
-// The implementation allows customization by overriding methods.
-// https://docs.spring.io/
+@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
+
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private UserDetailsService customUserDetailsService; // Dependency injection
+    private UserDetailsService customUserDetailsService;
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-// a jelszó kódolás módjának megadása:
         auth.userDetailsService(customUserDetailsService).passwordEncoder(new
                 BCryptPasswordEncoder());
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-<<<<<<< HEAD
-                .antMatchers("/resources/**", "/", "/regisztral", "/regisztral_feldolgoz", "/nyeremenyek").permitAll()
-=======
-                .antMatchers("/resources/**", "/", "/regisztral", "/regisztral_feldolgoz","/urlap1","/feladat2").permitAll()
->>>>>>> b7e48cbcfedc012e76f20296ea06cab313da116b
+                .antMatchers("/resources/**", "/", "/regisztral", "/regisztral_feldolgoz", "/nyeremenyek","/urlap1","/feladat2").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
