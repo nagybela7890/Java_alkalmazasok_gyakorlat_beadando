@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,20 +22,21 @@ public class HomeController {
     public String home() {
         return "index";
     }
-    @GetMapping("/home")
+
+    @GetMapping("/home")       //USER
     public String user() {
         return "user";
     }
-    @GetMapping("/admin/home")
+    @GetMapping("/admin/home")      //ADMIN
     public String admin() {
         return "admin";
     }
-    @GetMapping("/regisztral")
+
+    @GetMapping("/regisztral")          //REGISZTÁLÁS
     public String greetingForm(Model model) {
         model.addAttribute("reg", new User());
         return "regisztral";
     }
-
     @Autowired
     private UserRepository userRepo;
     @PostMapping("/regisztral_feldolgoz")
@@ -42,7 +46,6 @@ public class HomeController {
                 model.addAttribute("uzenet", "A regisztrációs email már foglalt!");
                 return "reghiba";
             }
-
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Role role = new Role();
