@@ -18,10 +18,13 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @GetMapping("/")        //ALAP OLDAL
+    @Autowired
+    private nyeremenyRepo NyeremenyRepo;
+    @GetMapping("/")
     public String home() {
         return "index";
     }
+
     @GetMapping("/home")       //USER
     public String user() {
         return "user";
