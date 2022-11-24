@@ -15,6 +15,9 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+    @Autowired
+    private nyeremenyRepo NyeremenyRepo;
+
     @GetMapping("/")
     public String home() {
         return "index";
@@ -31,6 +34,7 @@ public class HomeController {
     public String greetingForm(Model model) {
         model.addAttribute("reg", new User());
         return "regisztral";
+    }
     }
     @Autowired
     private UserRepository userRepo;
