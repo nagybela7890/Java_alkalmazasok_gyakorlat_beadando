@@ -15,9 +15,6 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @Autowired
-    private nyeremenyRepo NyeremenyRepo;
-
     @GetMapping("/")
     public String home() {
         return "index";

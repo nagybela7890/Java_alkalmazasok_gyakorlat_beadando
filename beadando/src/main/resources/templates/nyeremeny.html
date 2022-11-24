@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hu" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nyeremények</title>
+</head>
+<body>
+  <h1>Itt vagy az eredményeknél</h1>
+  <br/><br/>
+  <a th:href="@{/}">Főoldal</a>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Huzás Id</th>
+      <th>Találat</th>
+      <th>Darab</th>
+      <th>Értéks</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="nyeremeny : ${nyeremenyek}">
+      <td th:text="${nyeremeny.id}"></td>
+      <td th:text="${nyeremeny.huzasid}"></td>
+      <td th:text="${nyeremeny.talalat}"></td>
+      <td th:text="${nyeremeny.darab}"></td>
+      <td th:text="${nyeremeny.ertek}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
