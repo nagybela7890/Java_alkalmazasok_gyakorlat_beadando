@@ -1,24 +1,27 @@
 package com.example.beadando;
 
-import javax.validation.constraints.Min;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
-public class UzenetOsztaly
-{
-    @NotNull
-    @Min(2)
-    private long id;
+@Entity
+public class UzenetOsztaly {
+    @Id
+    private int id;
     @NotNull
     @Size(min=2, max=30)
 
     private String content;
+    private Date ido;
+    private String nev;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -28,5 +31,21 @@ public class UzenetOsztaly
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Date getIdo() {
+        return ido;
+    }
+
+    public void setIdo(Date ido) {
+        this.ido = ido;
+    }
+
+    public String getNev() {
+        return nev;
+    }
+
+    public void setNev(String nev) {
+        this.nev = nev;
     }
 }
