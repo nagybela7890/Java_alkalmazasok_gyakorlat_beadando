@@ -1,35 +1,83 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-  <script language="JavaScript">
-    function chkForm()
-    {
-      if (form1.pass1.value != form1.pass2.value)
-      {
-        console.log("Please re-enter your password");
-        form1.pass1.value = "";
-        form1.pass2.value = "";
-        form1.pass1.focus();
-        return false;
-      }
-    }
-  </script>
-
   <title>Regisztráció</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: grey;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  .container {
+    padding: 16px;
+    background-color: white;
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+
+  input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  .registerbtn {
+    background-color: green;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  .registerbtn:hover {
+    opacity: 10;
+  }
+  a {
+    color: dodgerblue;
+  }
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+</style>
 <body>
 <div th:insert="menu"></div>
-<h3>Regisztrálja magát, ha még nem felhasználó!</h3>
 <form action="#" th:action="@{/regisztral_feldolgoz}" th:object="${reg}" method="post">
-  <fieldset>
-    <legend>Regisztráció</legend>
-    <p><input type="text" th:field="*{name}" placeholder="Név" required/></p>
-    <p><input type="text" th:field="*{email}" placeholder="Email" required/></p>
-    <p><input type="password" th:field="*{password}" name="pass1" placeholder="Jelszó" required/></p>
-    <p><input type="password" placeholder="Jelszó" name="pass2" required/></p>
-    <p><input type="submit" value="Regisztráció" /></p>
-  </fieldset>
+  <div class="container">
+    <h1>Regisztráció</h1>
+    <hr>
+    <label for="nev"><b>Név</b></label>
+    <input type="text" th:field="*{name}" placeholder="Név" name="nev" id="nev" required>
+    <label for="email"> <b>Email</b></label>
+    <input type="text" th:field="*{email}" placeholder="Email" name="email" id="email" required>
+    <label for="psw"><b>Jelszó</b></label>
+    <input th:field="*{password}" type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <label for="psw-repeat"><b>Jelszó</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <hr>
+    <button type="submit" class="registerbtn">Regisztráció</button>
+  </div>
+
+  <div class="container signin">
+    <p>Regisztrált már? <a href="/login">Lépjen be</a>.</p>
+  </div>
 </form>
+
+
 </body>
 </html>
