@@ -1,22 +1,20 @@
 package com.example.beadando;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Table(name = "uzenet_osztaly")
 public class UzenetOsztaly {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     @NotNull
-    @Size(min=2, max=100)
+    @Size(min=2, max=500)
     private String content;
-    private Date ido;
-    private String nev;
 
     public int getId() {
         return id;
@@ -34,19 +32,5 @@ public class UzenetOsztaly {
         this.content = content;
     }
 
-    public Date getIdo() {
-        return ido;
-    }
 
-    public void setIdo(Date ido) {
-        this.ido = ido;
-    }
-
-    public String getNev() {
-        return nev;
-    }
-
-    public void setNev(String nev) {
-        this.nev = nev;
-    }
 }

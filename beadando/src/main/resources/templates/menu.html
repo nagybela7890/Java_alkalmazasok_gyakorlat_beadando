@@ -37,8 +37,7 @@
     <div class="topnav">
             <span sec:authorize="isAnonymous()">
                 <a href="/nyeremenyek">Nyeremények</a>
-                <a href="/">Kapcsolat</a>
-                <a href="/">Visszajelzések</a>
+                <a th:href="@{/visszajelzesek}">Visszajelzések</a>
                 <a th:href="@{/login}">Belépés</a>
                 <a th:href="@{/regisztral}">Regisztrál</a>
                 <a th:href="@{/urlap1}">Ürlap</a>
@@ -46,8 +45,7 @@
         <span sec:authorize="isAuthenticated()">
                 <a th:href="@{/}">Home</a>
                 <a href="/nyeremenyek">Nyeremények</a>
-                <a href="/">Kapcsolat</a>
-                <a href="/">Visszajelzések</a>
+                <a th:href="@{/visszajelzesek}">Visszajelzések</a>
                 <a th:href="@{/urlap1}">Ürlap</a>
                 <a th:href="@{/logout}">Logout</a>
             </span>
