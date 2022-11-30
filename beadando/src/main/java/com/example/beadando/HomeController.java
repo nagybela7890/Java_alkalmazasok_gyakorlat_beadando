@@ -25,6 +25,7 @@ public class HomeController {
 
     @GetMapping("/home")       //USER
     public String user() {
+
         return "user";
     }
     @GetMapping("/admin/home")      //ADMIN

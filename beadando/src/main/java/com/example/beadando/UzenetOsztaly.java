@@ -11,7 +11,7 @@ public class UzenetOsztaly {
     @Id
     private int id;
     @NotNull
-    @Size(min=2, max=30)
+    @Size(min=2, max=100)
 
     private String content;
     private Date ido;
