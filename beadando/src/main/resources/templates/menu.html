@@ -25,7 +25,11 @@
         background-color: #ddd;
         color: black;
     }
+.fejlecNev{
+    float:right;
+    background: red;
 
+}
 </style>
 <body>
 <div xmlns:th="http://www.thymeleaf.org"
@@ -53,8 +57,8 @@
     </div>
 
 </div>
-<div sec:authorize="isAuthenticated()">
-    <h3>Welcome <span sec:authentication="principal.username">User</span></h3>
+<div class="fejlecNev" sec:authorize="isAuthenticated()">
+    <h1><span sec:authentication="principal.username"></span> bejelentkezve</h1>
 </div>
 </body>
 </html>

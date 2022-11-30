@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 @Controller
 public class UrlapController {
+    private uzenetekRepo UzenetekRepo;
     @GetMapping("/urlap1")
     public String urlapForm(Model model) {
         model.addAttribute("uzenetOsztaly", new UzenetOsztaly());

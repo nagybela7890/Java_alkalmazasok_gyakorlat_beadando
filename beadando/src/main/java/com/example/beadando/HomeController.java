@@ -59,5 +59,4 @@ public class HomeController {
         model.addAttribute("id", user.getId());
         return "regjo";
     }
-
 }

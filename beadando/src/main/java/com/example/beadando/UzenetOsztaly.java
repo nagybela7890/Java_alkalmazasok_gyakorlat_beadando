@@ -2,17 +2,18 @@ package com.example.beadando;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@Table(name = "uzenet_osztaly")
 public class UzenetOsztaly {
     @Id
     private int id;
     @NotNull
     @Size(min=2, max=100)
-
     private String content;
     private Date ido;
     private String nev;
