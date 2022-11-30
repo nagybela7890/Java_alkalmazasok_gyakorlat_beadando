@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="hu" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -22,9 +22,10 @@
  <a th:href="@{/admin/home}">Admin</a>
  </span>
   </div>
-  <div sec:authorize="isAuthenticated()">
+
+</div>
+<div sec:authorize="isAuthenticated()">
     <h3>Welcome <span sec:authentication="principal.username">User</span></h3>
-  </div>
 </div>
 </body>
 </html>
