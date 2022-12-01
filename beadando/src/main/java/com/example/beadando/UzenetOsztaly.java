@@ -3,18 +3,19 @@ package com.example.beadando;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "uzenet_osztaly")
 public class UzenetOsztaly {
+    private static int count = 0;
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     @NotNull
     @Size(min=2, max=500)
     private String content;
+
+
 
     public int getId() {
         return id;

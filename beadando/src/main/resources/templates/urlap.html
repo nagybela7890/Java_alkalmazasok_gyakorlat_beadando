@@ -5,12 +5,25 @@
   <meta charset="UTF-8">
   <title>Kapcsolat</title>
 </head>
+<style>
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+  }
+</style>
 <body>
 <div th:insert="menu"></div>
-<div class="">
+<div >
 <h1>Üzenet küldés</h1>
 <form action="#" th:action="@{/feladat2}" th:object="${uzenetOsztaly}" method="post">
-  <p>Üzenet: <textarea th:field="*{content}" /></p>
+  <p>Üzenet: <textarea th:field="*{content}" required/></p>
 
   <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></p>
   <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
