@@ -55,7 +55,7 @@ public class HomeController {
         List<Role> rolelist = new ArrayList<Role>();
         rolelist.add(role);
         user.setRoles(rolelist);
-        userRepo.save(user);
+        //userRepo.save(user);
         model.addAttribute("id", user.getId());
         return "regjo";
     }
