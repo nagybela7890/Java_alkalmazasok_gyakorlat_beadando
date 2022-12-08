@@ -18,7 +18,7 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    @GetMapping("/index")
+    @GetMapping("/")
     public String home() {
         return "index";
     }
