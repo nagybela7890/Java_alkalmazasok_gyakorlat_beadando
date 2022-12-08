@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Nov 15. 18:52
+-- Létrehozás ideje: 2022. Dec 08. 22:42
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 8.0.11
 
@@ -20,73 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `hatoslotto`
 --
-CREATE DATABASE IF NOT EXISTS `hatoslotto` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `hatoslotto`;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `users`
---
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1, 'Admin', 'admin@gmail.com', '$2a$10$QEaf3I.eLiZC4F4pDnqmC.sTysFlJ59wgROmw3ATxceFs/wgg0LvK'),
-(3, 'User', 'user@gmail.com', '$2a$10$exVjZOnYQ3oFdNTFP7qVHOoL8K2XhKpWXY3r8duw8v9pTNxmC0qbm');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `roles`
---
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE `roles` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `roles`
---
-
-INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'ROLE_ADMIN'),
-(2, 'ROLE_ACTUATOR'),
-(3, 'ROLE_USER');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `user_role`
---
-DROP TABLE IF EXISTS `user_role`;
-CREATE TABLE `user_role` (
-  `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- A tábla adatainak kiíratása `user_role`
---
-
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(3, 2);
 
 -- --------------------------------------------------------
 
@@ -94,12 +27,10 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
 -- Tábla szerkezet ehhez a táblához `huzas`
 --
 
-DROP TABLE IF EXISTS `huzas`;
-CREATE TABLE IF NOT EXISTS `huzas` (
+CREATE TABLE `huzas` (
   `id` int(11) NOT NULL,
   `ev` int(11) NOT NULL,
-  `het` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `het` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1244,12 +1175,10 @@ INSERT INTO `huzas` (`id`, `ev`, `het`) VALUES
 -- Tábla szerkezet ehhez a táblához `huzott`
 --
 
-DROP TABLE IF EXISTS `huzott`;
-CREATE TABLE IF NOT EXISTS `huzott` (
+CREATE TABLE `huzott` (
   `id` int(11) NOT NULL,
   `huzasid` int(11) NOT NULL,
-  `szam` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `szam` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -8045,14 +7974,12 @@ INSERT INTO `huzott` (`id`, `huzasid`, `szam`) VALUES
 -- Tábla szerkezet ehhez a táblához `nyeremeny`
 --
 
-DROP TABLE IF EXISTS `nyeremeny`;
-CREATE TABLE IF NOT EXISTS `nyeremeny` (
+CREATE TABLE `nyeremeny` (
   `id` int(11) NOT NULL,
   `huzasid` int(11) NOT NULL,
   `talalat` int(11) NOT NULL,
   `darab` int(11) NOT NULL,
-  `ertek` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `ertek` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -11063,6 +10990,28 @@ INSERT INTO `nyeremeny` (`id`, `huzasid`, `talalat`, `darab`, `ertek`) VALUES
 (3151, 453, 3, 47124, 583),
 (3152, 356, 5, 52, 138683),
 (3153, 538, 3, 41777, 782);
+
+--
+-- Indexek a kiírt táblákhoz
+--
+
+--
+-- A tábla indexei `huzas`
+--
+ALTER TABLE `huzas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `huzott`
+--
+ALTER TABLE `huzott`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `nyeremeny`
+--
+ALTER TABLE `nyeremeny`
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
