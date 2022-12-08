@@ -38,7 +38,7 @@ public class UrlapController {
         if (bindingResult.hasErrors())
             return "urlap";
         // Ha nincs ilyen dolgozó, akkor felvisszük az adatbázisba:
-        UzenetekRepo.save(uzenetOsztaly);
+        //UzenetekRepo.save(uzenetOsztaly);
         //edirAttr.addFlashAttribute("uzenet","Új dolgozó hozzá lett adva! ID="+uzenetOsztaly.getId());
         model.addAttribute("attr2", uzenetOsztaly);
         return "eredmeny";
